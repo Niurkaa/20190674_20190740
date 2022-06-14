@@ -10,6 +10,9 @@ public class Cancion {
         this.nombre_cancion=nombre_cancion;
         this.banda= banda;
     }
+    public Cancion() {
+
+    }
 
     public int getIdCancion() {
         return idCancion;

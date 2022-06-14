@@ -1,5 +1,6 @@
 package Daos;
 
+import Beans.Banda;
 import Beans.Cancion;
 
 import java.sql.*;
@@ -9,7 +10,7 @@ public class CancionesDao {
 
     private static String user = "root";
     private static String pass = "root";
-    private static String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
+    private static String url = "jdbc:mysql://localhost:3306/lab6sw1";
 
 
     public ArrayList<Cancion> obtenerListaCanciones() {
@@ -37,4 +38,33 @@ public class CancionesDao {
         return listaCanciones;
 
     }
+
+    public ArrayList<Cancion> obtenerListaCancionesBanda(String filter) {
+
+        ArrayList<Cancion> listaCancionesBanda = new ArrayList<>();
+
+        String sql = "select * from cancion where banda = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setString(1, filter);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+
+                while (rs.next()) {
+                    Cancion cancion = new Cancion();
+                    cancion.setIdCancion(rs.getInt(1));
+                    cancion.setNombre_cancion(rs.getString(2));
+                    cancion.setBanda(rs.getString(3));
+                    listaCancionesBanda.add(cancion);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaCancionesBanda;
+    }
+
+
 }

@@ -15,13 +15,32 @@ import java.util.ArrayList;
 public class CancionesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("id") == null ? "listar" : request.getParameter("id");
+        System.out.println(action);
         CancionesDao cancionesDao = new CancionesDao();
-        ArrayList<Cancion> listaCanciones = cancionesDao.obtenerListaCanciones();
 
-        request.setAttribute("listaCanciones",listaCanciones);
+        if(action.equals("listar")){
+            ArrayList<Cancion> listaCanciones = cancionesDao.obtenerListaCanciones();
+            request.setAttribute("lista1","hola");
+            request.setAttribute("listaCancionesBanda",listaCanciones);
+            RequestDispatcher view =request.getRequestDispatcher("listaCanciones.jsp");
+            view.forward(request,response);
 
-        RequestDispatcher view =request.getRequestDispatcher("listaCanciones.jsp");
-        view.forward(request,response);
+        }
+        else{
+            ArrayList<Cancion> listaCancionesBanda = cancionesDao.obtenerListaCancionesBanda(action);
+            System.out.println(listaCancionesBanda.size());
+            request.setAttribute("lista1","banda");
+
+            request.setAttribute("listaCancionesBanda",listaCancionesBanda);
+
+            RequestDispatcher view =request.getRequestDispatcher("listaCanciones.jsp");
+            view.forward(request,response);
+        }
+
+
+
+
 
     }
 
