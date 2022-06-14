@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Valeria
+  User: Niurka
   Date: 14/06/2022
   Time: 00:15
   To change this template use File | Settings | File Templates.
@@ -29,7 +29,10 @@
 
     <div class="pb-5 pt-4 px-3 titlecolor">
         <div class="col-lg-6">
-            <h1 class='text-light'>Lista de Canciones</h1>
+            <h1 class='text-light'>Lista de Canciones por Banda
+                <a class="btn btn-warning" href="">Mostrar todas las canciones</a> </h1>
+
+
         </div>
     </div>
     <%}%>
@@ -59,6 +62,7 @@
             %>
         </table>
     </div>
+
 
 </div>
 <jsp:include page="/static/scripts.jsp"/>

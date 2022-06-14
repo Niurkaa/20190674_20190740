@@ -22,7 +22,7 @@ public class CancionesDao {
         ArrayList<Cancion> listaCanciones = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, pass);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("select * from cancion;");) {
+             ResultSet rs = stmt.executeQuery("SELECT idcancion,nombre_cancion,banda FROM lab6sw1.cancion order by banda ;")) {
 
             while (rs.next()) {
                 int id = rs.getInt(1);
