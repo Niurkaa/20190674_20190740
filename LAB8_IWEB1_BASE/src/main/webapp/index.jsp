@@ -2,7 +2,7 @@
 <html>
     <!--Colocar como value: nombre de la presente página -->
     <jsp:include page="/static/head.jsp">
-        <jsp:param name="title" value="Bienvenido"/>
+        <jsp:param name="title" value="Lista de Bandas"/>
     </jsp:include>
     <body>
         <div class='container'>
