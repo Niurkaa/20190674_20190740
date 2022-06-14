@@ -15,12 +15,6 @@ import java.util.ArrayList;
 public class CancionesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         CancionesDao cancionesDao = new CancionesDao();
         ArrayList<Cancion> listaCanciones = cancionesDao.obtenerListaCanciones();
 
@@ -28,6 +22,13 @@ public class CancionesServlet extends HttpServlet {
 
         RequestDispatcher view =request.getRequestDispatcher("listaCanciones.jsp");
         view.forward(request,response);
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
 
     }
 }

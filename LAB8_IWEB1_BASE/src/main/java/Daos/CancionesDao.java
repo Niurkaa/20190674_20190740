@@ -21,7 +21,7 @@ public class CancionesDao {
         ArrayList<Cancion> listaCanciones = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, pass);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("select * from tour where nombre_cancion like '%world%'")) {
+             ResultSet rs = stmt.executeQuery("select * from cancion;");) {
 
             while (rs.next()) {
                 int id = rs.getInt(1);
