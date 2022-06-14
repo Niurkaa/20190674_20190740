@@ -29,9 +29,8 @@
 
     <div class="pb-5 pt-4 px-3 titlecolor">
         <div class="col-lg-6">
-            <h1 class='text-light'>Lista de Canciones por Banda
-                <a class="btn btn-warning" href="">Mostrar todas las canciones</a> </h1>
-
+            <h1 class='text-light'>Lista de Canciones
+              </h1>
 
         </div>
     </div>
@@ -45,6 +44,7 @@
             <th>ID</th>
             <th>CANCIÓN</th>
             <th>BANDA</th>
+            <th>AGREGAR FAVORITOS</th>
             </thead>
             <%
                 for (Cancion cancion : listaCancionesBanda) {
@@ -55,6 +55,9 @@
                 <td><%=cancion.getNombre_cancion()%>
                 </td>
                 <td><%=cancion.getBanda()%>
+                </td>
+                <td><a class="btn btn-success" href="">Favoritos</a>
+
                 </td>
 
             </tr>

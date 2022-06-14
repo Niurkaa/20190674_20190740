@@ -29,7 +29,6 @@ public class CancionesServlet extends HttpServlet {
         }
         else{
             ArrayList<Cancion> listaCancionesBanda = cancionesDao.obtenerListaCancionesBanda(action);
-            System.out.println(listaCancionesBanda.size());
             request.setAttribute("lista1","banda");
 
             request.setAttribute("listaCancionesBanda",listaCancionesBanda);
