@@ -17,7 +17,6 @@ public class CancionesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CancionesDao cancionesDao = new CancionesDao();
         ArrayList<Cancion> listaCanciones = cancionesDao.obtenerListaCanciones();
-
         request.setAttribute("listaCanciones",listaCanciones);
 
         RequestDispatcher view =request.getRequestDispatcher("listaCanciones.jsp");
