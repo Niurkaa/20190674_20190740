@@ -31,6 +31,7 @@
                 <a class="nav-link <%=request.getParameter("page").equals("recomendados")? "active": "" %>" href="<%=request.getContextPath()%>/listaRecomendados">Recomendados</a>
             </li>
 
+
         </ul>
     </div>
 </nav>

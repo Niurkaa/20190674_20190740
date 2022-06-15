@@ -5,22 +5,20 @@
   Time: 13:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="Beans.listaReproduccion" %>
+<%@ page import="Beans.Cancion" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean type="java.util.ArrayList<Beans.listaReproduccion>" scope="request" id="listaReproduccion"/>
+<jsp:useBean type="java.util.ArrayList<Beans.Cancion>" scope="request" id="listarfavoritos"/>
+
 <html>
 <jsp:include page="/static/head.jsp">
-    <jsp:param name="title" value="Lista de Canciones Favoritas"/>
+    <jsp:param name="title" value=""/>
 </jsp:include>
-
-
-
 
 
 <body>
 <div class='container'>
     <jsp:include page="/includes/navbar.jsp">
-        <jsp:param name="page" value="favoritas"/>
+        <jsp:param name="page" value=""/>
     </jsp:include>
     <div class="pb-5 pt-4 px-3 titlecolor">
         <div class="col-lg-6">
@@ -38,14 +36,16 @@
             </tr>
             </thead>
             <%
-                for (listaReproduccion favoritas : listaReproduccion) {
+                for (Cancion favoritas : listarfavoritos) {
             %>
 
             <tbody>
             <tr>
-                <td><%=favoritas.getIdlista()%>
+                <td><%=favoritas.getIdCancion()%>
                 </td>
-                <td><%=favoritas.getNombre()%>
+                <td><%=favoritas.getNombre_cancion()%>
+                </td>
+                <td><%=favoritas.getBanda()%>
                 </td>
 
             </tr>

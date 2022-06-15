@@ -68,5 +68,40 @@ public class CancionesDao {
         return listaCancionesBanda;
     }
 
+    public static ArrayList<Cancion> listarfavoritos() {
+        ArrayList<Cancion> listaFavoritos= new ArrayList<>();
+        String user = "root";
+        String pass = "root";
+        String url = "jdbc:mysql://localhost:3306/lab6sw1";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery("select idcancion,nombre_cancion,banda,listaReproduccion_idlista from cancion where listaReproduccion_idlista = 1;");) {
+
+            while (rs.next()) {
+                Cancion cancion = new Cancion();
+                cancion.setIdCancion(rs.getInt(1));
+                cancion.setNombre_cancion(rs.getString(2));
+                cancion.setBanda(rs.getString(3));
+                cancion.setListaReproduccion(rs.getInt(4));
+
+                listaFavoritos.add(cancion);
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return listaFavoritos;
+    }
+
 
 }

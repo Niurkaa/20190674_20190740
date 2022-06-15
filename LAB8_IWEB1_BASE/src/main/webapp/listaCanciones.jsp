@@ -36,6 +36,8 @@
     </div>
     <%}%>
 
+    <a class="btn btn-success" type="submit" href="<%=request.getContextPath()%>/listaCanciones">Lista Favoritos</a>
+
 
 
     <div class="tabla">
@@ -45,6 +47,7 @@
             <th>CANCIÓN</th>
             <th>BANDA</th>
             <th>AGREGAR FAVORITOS</th>
+            <th>LISTAS</th>
             </thead>
             <%
                 for (Cancion cancion : listaCancionesBanda) {
@@ -59,14 +62,30 @@
                 <td>
                     <% if(cancion.getListaReproduccion()==1){%>
                     <a class="btn btn-danger" type="submit" href="<%=request.getContextPath()%>/listaCanciones?anadirfav=<%=cancion.getIdCancion()%>">NO Favoritos</a>
+                    <td>
+                    <select lista="nombre", nombre="nombre">
+                        <option>lista 1</option>
+                        <option>lista 2</option>
+                    </select>
+                </td>
                     <% }else {%>
                     <a class="btn btn-success" type="submit" href="<%=request.getContextPath()%>/listaCanciones?anadirfav=<%=cancion.getIdCancion()%>">Favoritos</a>
-                    <% }%>
+                <td>
+                <select lista="nombre", nombre="nombre">
+                    <option>lista 1</option>
+                    <option>lista 2</option>
+                    </select>
                 </td>
+
+                <% }%>
+                </td>
+
 
             </tr>
             <%}
             %>
+            <%--A niurka se le fue el comit y hizo esta parte--%>
+
         </table>
     </div>
 

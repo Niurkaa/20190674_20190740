@@ -19,7 +19,6 @@ public class CancionesServlet extends HttpServlet {
         String action = request.getParameter("id") == null ? "listar" : request.getParameter("id");
         CancionesDao cancionesDao = new CancionesDao();
         String action2 = request.getParameter("anadirfav") == null ? "0" : request.getParameter("anadirfav");
-        String action4 = request.getParameter("id") == null ? "anadirFavoritos" : request.getParameter("id");
         System.out.println("favoritos "+ action2);
         System.out.println("accion"+ action);
         if(action.equals("listar")){
@@ -39,7 +38,14 @@ public class CancionesServlet extends HttpServlet {
 
 
         else {
-            if(){
+            if(action.equals("anadirFavoritos")){
+                ArrayList<Cancion> listafavoritos = cancionesDao.listarfavoritos();
+
+                request.setAttribute("anadirFavoritos",listafavoritos);
+
+                RequestDispatcher view =request.getRequestDispatcher("listaFavoritas.jsp");
+                view.forward(request,response);
+
 
             }
             else{
