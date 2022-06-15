@@ -19,6 +19,7 @@ public class CancionesServlet extends HttpServlet {
         String action = request.getParameter("id") == null ? "listar" : request.getParameter("id");
         CancionesDao cancionesDao = new CancionesDao();
         String action2 = request.getParameter("anadirfav") == null ? "0" : request.getParameter("anadirfav");
+        String action4 = request.getParameter("id") == null ? "anadirFavoritos" : request.getParameter("id");
         System.out.println("favoritos "+ action2);
         System.out.println("accion"+ action);
         if(action.equals("listar")){
@@ -37,18 +38,24 @@ public class CancionesServlet extends HttpServlet {
         }
 
 
-
         else {
+            if(){
+
+            }
+            else{
                 ArrayList<Cancion> listaCancionesBanda = cancionesDao.obtenerListaCancionesBanda(action);
                 request.setAttribute("lista1", "banda");
                 request.setAttribute("listaCancionesBanda", listaCancionesBanda);
                 int action3 = Integer.parseInt(action2);
                 if(action3!=0){
-                listaReproduccionDao listareproduccion = new listaReproduccionDao();
-                listareproduccion.anadirFavoritos(action3);
+                    listaReproduccionDao listareproduccion = new listaReproduccionDao();
+                    listareproduccion.anadirFavoritos(action3);
                 }
                 RequestDispatcher view = request.getRequestDispatcher("listaCanciones.jsp");
                 view.forward(request, response);
+
+            }
+
 
 
         }

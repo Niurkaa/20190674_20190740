@@ -12,6 +12,11 @@
 <jsp:include page="/static/head.jsp">
     <jsp:param name="title" value="Lista de Canciones Favoritas"/>
 </jsp:include>
+
+
+
+
+
 <body>
 <div class='container'>
     <jsp:include page="/includes/navbar.jsp">

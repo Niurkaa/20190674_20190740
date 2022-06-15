@@ -22,12 +22,13 @@ public class CancionesDao {
         ArrayList<Cancion> listaCanciones = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, pass);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT idcancion,nombre_cancion,banda FROM lab6sw1.cancion order by banda ;")) {
+             ResultSet rs = stmt.executeQuery("SELECT idcancion,nombre_cancion,banda,listaReproduccion_idlista FROM lab6sw1.cancion order by banda ;")) {
 
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String nombre = rs.getString(2);
                 String banda = rs.getString(3);
+                int listareproduccion = rs.getInt(4);
 
                 listaCanciones.add(new Cancion(id, nombre, banda));
             }
@@ -56,6 +57,7 @@ public class CancionesDao {
                     cancion.setIdCancion(rs.getInt(1));
                     cancion.setNombre_cancion(rs.getString(2));
                     cancion.setBanda(rs.getString(3));
+                    cancion.setListaReproduccion(rs.getInt(4));
                     listaCancionesBanda.add(cancion);
 
                 }
