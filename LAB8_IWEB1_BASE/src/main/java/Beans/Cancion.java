@@ -4,6 +4,15 @@ public class Cancion {
     private int idCancion;
     private String nombre_cancion;
     private String banda;
+    private int listaReproduccion;
+
+    public int getListaReproduccion() {
+        return listaReproduccion;
+    }
+
+    public void setListaReproduccion(int listaReproduccion) {
+        this.listaReproduccion = listaReproduccion;
+    }
 
     public Cancion(int idCancion, String nombre_cancion, String banda ) {
         this.idCancion = idCancion;

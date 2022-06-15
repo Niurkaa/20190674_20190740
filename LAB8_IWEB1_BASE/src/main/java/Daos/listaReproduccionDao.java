@@ -1,5 +1,6 @@
 package Daos;
 
+import Beans.Cancion;
 import Beans.listaReproduccion;
 
 import java.sql.*;
@@ -37,6 +38,26 @@ public class listaReproduccionDao {
         return listaReproduccion;
 
     }
+    public void anadirFavoritos(int idCancion) {
+        String sql = "update cancion set listaReproduccion_idlista = 1 where idcancion = ?;";
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setInt(1, idCancion);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Hubo un error en la conexión!");
+            e.printStackTrace();
+        }
+
+
     }
+
+
+
+
+
+}
 
 

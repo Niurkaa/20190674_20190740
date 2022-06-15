@@ -56,7 +56,7 @@
                 </td>
                 <td><%=cancion.getBanda()%>
                 </td>
-                <td><a class="btn btn-success" href="">Favoritos</a>
+                <td><a class="btn btn-success" type="submit" href="<%=request.getContextPath()%>/listaCanciones?anadirfav=<%=cancion.getIdCancion()%>">Favoritos</a>
 
                 </td>
 
